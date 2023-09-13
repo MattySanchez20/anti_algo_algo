@@ -1,16 +1,16 @@
-# Use an official Python 3.10 image as the parent image
+# # Use an official Python 3.10 image as the parent image
 FROM python:3.10-slim
+
+# Set environment variables
+ENV TZ=UTC
 
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy the rest of the application code into the container
+# Copy files to working directory
 COPY . /app
 
-ENV PATH="/usr/bin/google-chrome:${PATH}"
-
-# installing all packages for python
 RUN pip install -r requirements.txt
 
-# Specify the command to run your script (replace script.py with your script's filename)
+# Start your Selenium script when the container runs
 CMD ["python", "origin.py"]
