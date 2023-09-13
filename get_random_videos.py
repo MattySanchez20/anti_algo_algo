@@ -235,7 +235,7 @@ class YoutubeVideoRandomiser:
         """
 
         random_vids = self._obtain_random_videos(driver=driver, thumbnail_href_xpath=thumbnail_href_inside, num_of_videos=self.num_of_videos)
-        
-        return random_vids
 
         driver.quit()
+
+        return random_vids

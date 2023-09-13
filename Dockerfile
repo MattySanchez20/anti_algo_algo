@@ -2,17 +2,15 @@
 FROM python:3.10-slim
 
 # Set the working directory in the container
-WORKDIR .
-
-# Copy the local poetry.lock and pyproject.toml into the container
-COPY pyproject.toml poetry.lock ./
-
-# Install poetry and project dependencies
-RUN pip install poetry
-RUN poetry config virtualenvs.create false && poetry install --no-dev
+WORKDIR /app
 
 # Copy the rest of the application code into the container
-COPY . .
+COPY . /app
+
+ENV PATH="/usr/bin/google-chrome:${PATH}"
+
+# installing all packages for python
+RUN pip install -r requirements.txt
 
 # Specify the command to run your script (replace script.py with your script's filename)
-CMD ["python", "script.py"]
+CMD ["python", "origin.py"]
