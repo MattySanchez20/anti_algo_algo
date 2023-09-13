@@ -1,0 +1,21 @@
+version: '3'
+services:
+  selenium-chrome:
+    image: selenium/standalone-chrome
+    ports:
+      - "4444:4444"
+    volumes:
+      - /dev/shm:/dev/shm
+    container_name: my_selenium_container
+    networks:
+      - my_network  # Create a custom network for communication
+
+  anti_algo_algo_app:
+    build: .
+    depends_on:
+      - selenium-chrome
+    networks:
+      - my_network  # Use the same network for communication
+
+networks:
+  my_network:  # Define a custom network for communication between containers
