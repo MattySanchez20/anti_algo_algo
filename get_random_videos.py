@@ -21,29 +21,16 @@ class YoutubeVideoRandomiser:
         self.favourite_youtubers = favourite_youtubers
         self.num_of_videos = num_of_videos
 
-    def _create_driver(self):
-        # grid_url = "http://172.17.0.2:4444/wd/hub"  # Use the actual container name or IP
+    @staticmethod
+    def _create_driver():
 
-        # options = Options()
+        chrome_options = Options()
 
-        # # options.set_capability(DesiredCapabilities.CHROME)
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--disable-dev-shm-usage")
 
-        # # Configure the WebDriver to use the Selenium Grid
-        # driver = webdriver.Remote(
-        #     command_executor=grid_url,
-        #     options=options
-        # )
-
-        # working in local
-        options = Options()
-
-        # detach means it allows chrome to run in a seperate window (set to true)
-        options.add_experimental_option("detach", True)
-
-        # driver uses google chrome as the web browser
-        driver = webdriver.Chrome(
-            service=Service(ChromeDriverManager().install()), options=options
-        )
+        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 
         return driver
 
@@ -167,6 +154,6 @@ class YoutubeVideoRandomiser:
             num_of_videos=self.num_of_videos,
         )
 
-        # driver.quit()
+        driver.quit()
 
         return random_vids
