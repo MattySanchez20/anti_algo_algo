@@ -23,5 +23,13 @@ Once back end is running, we can run the following command:
 
 docker run --name anti_algo_app-instance --network anti_algo_network -d anti_algo_app
 
-
 REMEMBER CHANGES TO THE CODE NEEDS THIS TO BE RUN AGAIN: docker build -t anti_algo_app .
+
+Use if container already exists:
+
+ docker start name_of_container
+
+Important notes:
+
+- always use docker stop name_of_container to make sure it closes properly
+- 
