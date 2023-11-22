@@ -1,0 +1,36 @@
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(167, 167, 167); /* Light grey background for a sleek look */
+    color: #333;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-top: 20px;
+}
+
+#video-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+iframe {
+    width: 560px;
+    height: 315px;
+    border: 2px solid rgb(167, 167, 167); /* Light grey border */
+    border-radius: 5px; /* Slightly rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+@media screen and (max-width: 600px) {
+    iframe {
+        width: 100%;
+        height: auto;
+    }
+}

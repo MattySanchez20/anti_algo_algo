@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Gallery</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Featured YouTube Videos</h1>
+        </header>
+        <div id="video-container">
+            {% for video_url in videos %}
+            <iframe width="560" height="315" src="{{ video_url }}" frameborder="0" allowfullscreen></iframe>
+            {% endfor %}
+        </div>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2023 Video Gallery. All rights reserved.</p>
+    </footer>
+    <script src="static/script.js"></script>
+</body>
+</html>
+
+

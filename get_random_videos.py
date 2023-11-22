@@ -155,5 +155,9 @@ class YoutubeVideoRandomiser:
         )
 
         driver.quit()
+        
+        video_ids = [video.replace("https://www.youtube.com/watch?v=", "") for video in random_vids]
 
-        return random_vids
+        embeded_urls = [f"https://www.youtube.com/embed/{_id}?controls=0" for _id in video_ids]
+
+        return embeded_urls
