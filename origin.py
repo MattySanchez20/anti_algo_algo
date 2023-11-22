@@ -1,22 +1,15 @@
 from get_random_videos import YoutubeVideoRandomiser
+from db_connection import move_videos_to_db
 
 yt = YoutubeVideoRandomiser(num_of_videos=1)
 
-print(yt.f_mark_z())
+videos = yt.f_mark_z()
 
-"""
-print(random_url)
-#### SEND THE EMAIL WITH THE URL
+print(videos)
 
-subject = "random video generated for you to watch"
+print("Moving videos to back end... \n")
 
-body = f"Here is a video you can watch today {random_url}"
+move_videos_to_db(videos)
 
-recipient = "matirsw@gmail.com"
-
-mail = Email_Handler()
-
-mail.send_email(subject=subject, body=body, recipient=recipient)
-
-"""
+print("Videos successfully moved to back end.")
 

@@ -1,0 +1,27 @@
+docker network create anti_algo_network:
+a7c147a1cde229d832e8f30afb0ffd155fd50f7b986b3f6b7fd47033aea1074d
+
+
+docker run --name mongo_backend -p 27017:27017 -d mongo
+4ac1dbb4d59f5a32a753ba71654afd6e31639ac51a81ba99cd9b2fea29a18da4
+
+
+
+docker run --name anti_algo_app-instance --network anti_algo_network -d anti_algo_app
+
+
+First connect container to network:
+
+docker network connect anti_algo_network mongo_backend
+
+then run the container on the network:
+
+docker run --name mongo_backend --network anti_algo_network -d mongo
+
+
+Once back end is running, we can run the following command:
+
+docker run --name anti_algo_app-instance --network anti_algo_network -d anti_algo_app
+
+
+REMEMBER CHANGES TO THE CODE NEEDS THIS TO BE RUN AGAIN: docker build -t anti_algo_app .
